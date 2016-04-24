@@ -1,5 +1,9 @@
 *.class
 
+out
+
+.idea
+
 Assignment1
 Assignment2
 Assignment3
