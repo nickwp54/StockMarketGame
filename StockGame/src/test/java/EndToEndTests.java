@@ -2,7 +2,7 @@ import com.vt.stockwebgame.manager.StockManager;
 import com.vt.stockwebgame.routes.Router;
 import org.junit.Before;
 import org.junit.Test;
-import spark.Request;
+import com.vt.stockwebgame.domains.User;
 
 import static org.junit.Assert.*;
 
@@ -19,7 +19,15 @@ public class EndToEndTests {
 
     @Test
     public void signUpTest() throws Exception {
+        User user = new User();
+        user.setUsername("user");
+        user.setPassword("password");
+        user.setFirstName("Nich");
+        user.setLastName("Phillpott");
+        user.setEmail("nick@p.com");
+        user.setPhone("6665553739");
 
+        
     }
 
     @Test
