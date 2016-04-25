@@ -15,6 +15,11 @@ public class Router {
 
         get("/hello", (req, res) -> "Hello World");
 
+        get ("/", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "index.html");
+        }, new VelocityTemplateEngine());
+
         get("/viewstock", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("symbol", request.queryParams("sym"));
