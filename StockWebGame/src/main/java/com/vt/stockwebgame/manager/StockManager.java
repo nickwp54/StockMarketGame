@@ -2,13 +2,14 @@
  * Created by Nicholas Phillpott on 2016.04.24  * 
  * Copyright © 2016 Nicholas Phillpott. All rights reserved. * 
  */
-package com.mycompany.stockwebgame.manager;
+package com.vt.stockwebgame.manager;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
 import com.vt.stockwebgame.domains.User;
+import com.vt.stockwebgame.helpers.StockLookup;
 
 /**
  *
@@ -62,6 +63,14 @@ public class StockManager implements Serializable {
     public String createUser() {
         ActiveUsers.add(user);
         return ""; 
+    }
+    
+    public float getStockPrice(String symbol) {
+        return StockLookup.loadStock(symbol).getPrice();
+    }
+    
+    public String testit() {
+        return "this is a test";
     }
     
     //--------------------------------------------------------------------------
