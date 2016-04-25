@@ -18,12 +18,12 @@ import java.util.Collections;
 public class StockManager implements Serializable {
     
     private User user;
-    private String username; 
-    private String password; 
-    private ArrayList<User> ActiveUsers; 
-    private String statusMessage;
+    private String username;
+    private String password;
+    private ArrayList<User> ActiveUsers;
     
     public StockManager() {
+        ActiveUsers = new ArrayList<User>();
     }
 
     public User getUser() {
@@ -56,14 +56,6 @@ public class StockManager implements Serializable {
 
     public void setActiveUsers(ArrayList<User> ActiveUsers) {
         this.ActiveUsers = ActiveUsers;
-    }
-
-    public String getStatusMessage() {
-        return statusMessage;
-    }
-
-    public void setStatusMessage(String statusMessage) {
-        this.statusMessage = statusMessage;
     }
     
     public String createUser() {
@@ -103,27 +95,27 @@ public class StockManager implements Serializable {
     
     //--------------------------------------------------------------------------
     
-    public String loginUser() {
+    public Boolean loginUser(String username, String password) {
         
         for (User u : ActiveUsers) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 user = u; 
             }
             else {
-                statusMessage = "Username of Password Wrong";
-                return "";
+                return false;
             }
         }
-        return "Account";
+        return true;
     }
     
-    public String logout() {
-        user = null; 
-        return "";
+    public Boolean logout() {
+        if (user == null) return false;
+        user = null;
+        return true;
     }
-    
-    public String prepareCreateUser() {
-        user = new User(); 
-        return "CreateUser";
+
+    public Boolean signUp(User user) {
+        ActiveUsers.add(user);
+        return true;
     }
 }
