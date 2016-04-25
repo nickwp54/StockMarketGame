@@ -8,7 +8,23 @@
     #parse('global_nav.vm')
 
     <div class="container">
-    <h1 class="header">Account Summary</h1>
+        #if($buy_error)
+        <div class="alert alert-danger" role="alert"><b>Insufficient funds!</b> You do not have a high enough
+            available balance to purchase this stock.
+        </div>
+        #elseif($buy_success)
+        <div class="alert alert-success" role="alert"><b>Shares purchased!</b> You bought ${quantity} shares of ${symbol}
+            for $numberTool.currency($buy_price)</div>
+        #end
+
+        #if($sell_error)
+        <div class="alert alert-danger" role="alert"><b>Insufficient shares!</b> You do not have the available number of
+            shares to sell.</div>
+        #end
+
+
+
+        <h1 class="header">Account Summary</h1>
     <div class="row">
             <div class="col-md-10">
             <table class="table table-bordered">
@@ -21,9 +37,9 @@
               </thead>
               <tbody>
               <tr>
-                <td>ishitag</td>
-                <td>$0</td>
-                <td>$100</td>
+                <td>${user.username}</td>
+                <td>$numberTool.currency($user.balance)</td>
+                <td>$numberTool.currency($user.calculateNetWorth())</td>
               </tr>
             </tbody>
             </table>
