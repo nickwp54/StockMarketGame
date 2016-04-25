@@ -76,10 +76,13 @@ Welcome page basic information and login forms
     <div id="chart" style="width:100%; height:400px;"></div>
 
 
+    #elseif(!$symbol)
+    <div class="alert alert-danger" role="alert"><b>No symbol specified!</b> Try the ticker name of a stock like
+        <a href="viewstock?sym=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?sym=TSLA" class="alert-link">TSLA</a>, or <a href="viewstock?sym=GOOG" class="alert-link">GOOG</a>.</div>
+
     #else
     <div class="alert alert-danger" role="alert"><b>Invalid symbol ${symbol}!</b> Try the ticker name of a stock like
-        <a href="viewstock?sym=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?sym=AAPL" class="alert-link">TSLA</a>, or <a href="viewstock?sym=AAPL" class="alert-link">GOOG</a>.</div>
-
+        <a href="viewstock?sym=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?sym=TSLA" class="alert-link">TSLA</a>, or <a href="viewstock?sym=GOOG" class="alert-link">GOOG</a>.</div>
     #end
     </body>
 </html>

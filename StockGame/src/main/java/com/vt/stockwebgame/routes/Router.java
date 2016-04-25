@@ -81,16 +81,22 @@ public class Router {
         User u = new User();
         u.setUsername("testName");
 
+        String symbol = request.queryParams("sym");
         Map<String, Object> model = new HashMap<>();
         model.put("numberTool", new NumberTool());
-        model.put("symbol", request.queryParams("sym").toUpperCase());
         model.put("user", u);
 
-        float price = manager.getStockPrice(request.queryParams("sym"));
-        if (price > 0) {
-            model.put("valid", true);
-            model.put("price", manager.getStockPrice(request.queryParams("sym")));
-            model.put("data", manager.getStockData(request.queryParams("sym")));
+        if (symbol != null && symbol.length() > 0) {
+            model.put("symbol", symbol.toUpperCase());
+            float price = manager.getStockPrice(request.queryParams("sym"));
+            if (price > 0) {
+                model.put("valid", true);
+                model.put("price", manager.getStockPrice(request.queryParams("sym")));
+                model.put("data", manager.getStockData(request.queryParams("sym")));
+            }
+            else {
+                model.put("valid", false);
+            }
         }
         else {
             model.put("valid", false);
