@@ -17,15 +17,14 @@ public class StockLookupTest {
 
     @Test
     public void testLoadStockHistory() {
-        String s = StockLookup.loadStockChart("TSLA");
-        Assert.assertTrue(s.contains("Positions"));
-        Assert.assertTrue(s.contains("Dates"));
-        Assert.assertTrue(s.contains("TSLA"));
+        StockChart s = StockLookup.loadStockChart("TSLA");
+        Assert.assertTrue(s.getChartJSON().length() > 0);
+        Assert.assertNotNull(s);
     }
 
     @Test
     public void testLoadFakeStockHistory() {
-        String s = StockLookup.loadStockChart("BLABLABLA");
+        StockChart s = StockLookup.loadStockChart("BLABLABLA");
         Assert.assertNull(s);
     }
 }
