@@ -1,5 +1,5 @@
 import com.oracle.javafx.jmx.json.JSONReader;
-import javax.json.Json;
+import javax.json.*;
 
 public class StockChart {
     private String json;
@@ -13,6 +13,6 @@ public class StockChart {
     }
 
     private void loadAndFormat(String jsonSource) {
-//        JSONReader reader = JSONReader.
+//        JSONReader reader = Json.
     }
 }
