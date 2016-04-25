@@ -67,7 +67,13 @@ public class Router {
                 }
             } catch (Exception e) {
             }
+            model.put("user", currentUser(manager, request));
+            return new ModelAndView(model, "Profile.html");
+        }, new VelocityTemplateEngine());
 
+        get("/profile", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("user", currentUser(manager, request));
             return new ModelAndView(model, "Profile.html");
         }, new VelocityTemplateEngine());
 
@@ -76,13 +82,12 @@ public class Router {
         }, new VelocityTemplateEngine());
     }
 
-    private User currentUser(String username, Request request) {
-        return request.session().attribute(username);
+    private static User currentUser(StockManager manager, Request request) {
+        return manager.findActiveUser(request.session().attribute("user"));
     }
 
     public static ModelAndView viewStock(StockManager manager, Request request, Response response) {
-        User u = new User();
-        u.setUsername("testName");
+        User u = currentUser(manager, request);
 
         String symbol = request.queryParams("sym");
         Map<String, Object> model = new HashMap<>();
