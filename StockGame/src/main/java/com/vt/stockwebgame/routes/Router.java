@@ -66,7 +66,6 @@ public class Router {
                     return new ModelAndView(model, "index.html");
                 }
             } catch (Exception e) {
-                System.out.println("fasdf");
             }
 
             return new ModelAndView(model, "Profile.html");
@@ -75,6 +74,10 @@ public class Router {
         get("/viewstock", (request, response) -> {
             return viewStock(manager, request, response);
         }, new VelocityTemplateEngine());
+    }
+
+    private User currentUser(String username, Request request) {
+        return request.session().attribute(username);
     }
 
     public static ModelAndView viewStock(StockManager manager, Request request, Response response) {
