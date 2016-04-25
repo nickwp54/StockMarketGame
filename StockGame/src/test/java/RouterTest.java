@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import spark.Request;
 
 /**
  * Created by painter on 4/25/16.
@@ -10,7 +11,7 @@ public class RouterTest {
 
     @Before
     public void setup() {
-
+        Request request = new Request();
     }
 
     @Test
