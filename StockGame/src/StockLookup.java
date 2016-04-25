@@ -32,14 +32,15 @@ public class StockLookup {
         }
     }
 
-    public static String loadStockChart(String ticker) {
+    public static StockChart loadStockChart(String ticker) {
         try {
             String substituted = String.format(CHART_PARAMS, ticker);
             String encoded = URLEncoder.encode(substituted, ENCODING);
             String address = CHART_QUERY + encoded;
             URL url = new URL(address);
             URLConnection conn = url.openConnection();
-            return streamToString(conn.getInputStream());
+            String str = streamToString(conn.getInputStream());
+            return null;
         }
         catch (Exception e) {
             return null;
