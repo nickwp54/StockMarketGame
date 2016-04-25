@@ -1,4 +1,4 @@
-package com.vt.stockwebgame.domains
+package com.vt.stockwebgame.domains;
 
 import java.io.InputStream;
 import javax.json.*;

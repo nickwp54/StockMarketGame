@@ -8,7 +8,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
-import com.mycompany.stockwebgame.domains.User;
+import com.vt.stockwebgame.domains.User;
 
 /**
  *
