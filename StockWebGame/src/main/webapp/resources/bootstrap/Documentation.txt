@@ -1,2 +1,0 @@
-A complete documentation for Bootstrap can be found at:
-http://getbootstrap.com/
