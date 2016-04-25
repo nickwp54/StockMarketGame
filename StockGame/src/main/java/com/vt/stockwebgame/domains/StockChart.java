@@ -27,7 +27,7 @@ public class StockChart {
                 sb.append(",");
             }
         }
-        sb.append("]);");
+        sb.append("]");
         return sb.toString();
     }
 
@@ -54,7 +54,8 @@ public class StockChart {
             long timestamp;
             try {
                 timestamp = new java.sql.Timestamp(
-                        sdf.parse(jsonDates.getString(i)).getTime()).getNanos();
+                        sdf.parse(jsonDates.getString(i)).getTime()).getTime();
+                System.out.println(timestamp);
             } catch (ParseException ex) {
                 System.out.println(ex.toString());
                 continue;
