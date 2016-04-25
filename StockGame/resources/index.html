@@ -35,14 +35,17 @@
                     alt=""> -->
                 <!-- <h1 class="text-center login-title">Stock Market Game </h1> -->
                 <h1 class="text-center login-title">Login</h1>
-                <form class="form-signin">
-                <input id="user_name" type="text" class="form-control" placeholder="User Name" required autofocus>
-                <input id="password" type="password" class="form-control" placeholder="Password" required>
+                #if($error)
+                <div class="alert alert-danger" role="alert">${error}</div>
+                #end
+                <form class="form-signin" action="login" method="post">
+                <input id="user_name" type="text" name="username" class="form-control" placeholder="User Name" required autofocus>
+                <input id="password" type="password" name="password" class="form-control" placeholder="Password" required>
                 <button id="sign_in" class="btn btn-lg btn-primary btn-block">
                     Sign in</button>
                 <label class="checkbox pull-left">
                 </label>
-                <a href="SignUp.html" class="text-center new-account">Create an account </a>
+                <a href="signup" class="text-center new-account">Create an account </a>
                 </form>
             </div>
         </div>

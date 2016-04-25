@@ -20,10 +20,10 @@ public class StockManager implements Serializable {
     private User user;
     private String username;
     private String password;
-    private ArrayList<User> ActiveUsers;
+    private ArrayList<User> activeUsers;
     
     public StockManager() {
-        ActiveUsers = new ArrayList<User>();
+        activeUsers = new ArrayList<User>();
     }
 
     public User getUser() {
@@ -51,15 +51,15 @@ public class StockManager implements Serializable {
     }
 
     public ArrayList<User> getActiveUsers() {
-        return ActiveUsers;
+        return activeUsers;
     }
 
     public void setActiveUsers(ArrayList<User> ActiveUsers) {
-        this.ActiveUsers = ActiveUsers;
+        this.activeUsers = ActiveUsers;
     }
     
     public String createUser() {
-        ActiveUsers.add(user);
+        activeUsers.add(user);
         return ""; 
     }
     
@@ -88,7 +88,7 @@ public class StockManager implements Serializable {
     }
     
     public ArrayList<User> getLeaderboard() {
-        ArrayList<User> leaderboard = new ArrayList<User>(ActiveUsers);
+        ArrayList<User> leaderboard = new ArrayList<User>(activeUsers);
         Collections.sort(leaderboard);
         return leaderboard;
     }
@@ -96,16 +96,13 @@ public class StockManager implements Serializable {
     //--------------------------------------------------------------------------
     
     public Boolean loginUser(String username, String password) {
-        
-        for (User u : ActiveUsers) {
+        for (User u : activeUsers) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                user = u; 
-            }
-            else {
-                return false;
+                user = u;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public Boolean logout() {
@@ -115,7 +112,19 @@ public class StockManager implements Serializable {
     }
 
     public Boolean signUp(User user) {
-        ActiveUsers.add(user);
+        for (User u : activeUsers) {
+            if (u.getUsername().equals(u.getUsername())) {
+                return false;
+            }
+        }
+        activeUsers.add(user);
         return true;
+    }
+
+    public User findActiveUser(String username) {
+        for (User u : activeUsers) {
+            if (u.getUsername().equals(username)) return u;
+        }
+        return null;
     }
 }

@@ -34,18 +34,20 @@
                 <!-- <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                     alt=""> -->
                 <h1 class="text-center login-title">Welcome New User!</h1>
-                <form class="form-signin">
-                <input type="text" class="form-control" placeholder="Enter your Email" required autofocus>
-                <input type="text" class="form-control" placeholder="Pick a Username" required autofocus>
-                <input type="text" class="form-control" placeholder="Enter Your First Name" required autofocu>
-                <input type="text" class="form-control" placeholder="Enter Your Last Name" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
-                <input type="password" class="form-control" placeholder="Confirm Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                #if($error)
+                <div class="alert alert-danger" role="alert">${error}</div>
+                #end
+                <form class="form-signin" action="signup" method="post">
+                <input type="text" class="form-control" name="email" placeholder="Enter your Email" required autofocus/>
+                <input type="text" class="form-control" name="username" placeholder="Pick a Username" required autofocus/>
+                <input type="text" class="form-control" name="firstName" placeholder="Enter Your First Name" required autofocu/>
+                <input type="text" class="form-control" name="lastName" placeholder="Enter Your Last Name" required autofocus/>
+                <input type="password" class="form-control" name="password" placeholder="Password" required/>
+                <button class="btn btn-lg btn-primary btn-block" type="submit"/>
                     Sign up</button>
                 <label class="checkbox pull-left">
                 </label>
-                <a href="index.html" class="text-center new-account">Back to Login Page </a>
+                <a href="/" class="text-center new-account">Back to Login Page </a>
                 </form>
             </div>
         </div>
