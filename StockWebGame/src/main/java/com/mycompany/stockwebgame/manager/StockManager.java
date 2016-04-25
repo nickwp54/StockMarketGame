@@ -36,11 +36,11 @@ public class StockManager implements Serializable {
     }
     
     public User getLogin() {
-        return user;
+        return login;
     }
 
-    public void setLogin(User user) {
-        this.user = user;
+    public void setLogin(User login) {
+        this.login = user;
     }
 
     public ArrayList<User> getActiveUsers() {
