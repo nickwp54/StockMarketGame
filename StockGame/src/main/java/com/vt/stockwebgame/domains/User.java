@@ -121,7 +121,7 @@ public class User implements Comparator<User>, Comparable<User> {
             throw new NotEnoughException(); 
         }
         
-        balance = balance + (shares * stocks.get(stock.getSymbol()));
+        balance = balance + (shares * stock.getPrice());
         
         int current = stocks.get(stock.getSymbol()) - shares;
         stocks.remove(stock.getSymbol());
