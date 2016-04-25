@@ -5,10 +5,8 @@
 package com.vt.stockwebgame.domains;
 
 import com.vt.stockwebgame.helpers.StockLookup;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Random;
+
+import java.util.*;
 
 /**
  *
@@ -140,6 +138,16 @@ public class User implements Comparator<User>, Comparable<User> {
             total += price * s.getValue();
         }
         return total;
+    }
+
+    public List<Stock> getAllStocks() {
+        List<Stock> temp = new ArrayList<>();
+        for (Map.Entry<String, Integer> s : stocks.entrySet()) {
+            Stock stock = StockLookup.loadStock(s.getKey());
+            stock.setQuantity(s.getValue());
+            temp.add(stock);
+        }
+        return temp;
     }
 
     @Override

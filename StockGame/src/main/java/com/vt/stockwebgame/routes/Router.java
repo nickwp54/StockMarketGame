@@ -63,6 +63,10 @@ public class Router {
             return buyStock(manager, request);
         }, new VelocityTemplateEngine());
 
+        get("/sellstock", (request, response) -> {
+            return sellStock(manager, request);
+        }, new VelocityTemplateEngine());
+
         post("/login", (request, response) -> {
             try {
                 if(manager.loginUser(request.queryParams("username"), request.queryParams("password"))) {
@@ -143,6 +147,35 @@ public class Router {
         }
         catch (Exception e) {
             model.put("buy_error", true);
+        }
+
+        return new ModelAndView(model, "Profile.html");
+    }
+
+    public static ModelAndView sellStock(StockManager manager, Request request) {
+        Map<String, Object> model = createUserModel(manager, request);
+        User u = (User) model.get("user");
+        String symbol = request.queryParams("symbol");
+        Stock stock = null;
+
+        int quantity = 0;
+        try {
+            stock = StockLookup.loadStock(symbol);
+            quantity = Integer.parseInt(request.queryParams("quantity"));
+            u.sellStock(StockLookup.loadStock(symbol), quantity);
+            model.put("sell_price", quantity * stock.getPrice());
+            model.put("sell_success", true);
+            model.put("symbol", symbol);
+            model.put("quantity", quantity);
+        }
+        catch (NotEnoughException notEnough) {
+            model.put("sell_error", true);
+            model.put("sell_price", quantity * stock.getPrice());
+            model.put("symbol", symbol);
+            model.put("quantity", quantity);
+        }
+        catch (Exception e) {
+            model.put("sell_error", true);
         }
 
         return new ModelAndView(model, "Profile.html");
