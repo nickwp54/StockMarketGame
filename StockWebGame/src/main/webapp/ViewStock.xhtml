@@ -3,14 +3,15 @@
 <!--
 Stock view area
 -->
-<html xmlns="http://www.w3.org/1999/xhtml"  
-      xmlns:h="http://java.sun.com/jsf/html"  
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
-    <ui:composition template="/templates/main.xhtml">
-        <ui:define name="content">
-            <h:outputText value="#{stockManager.getStockPrice('TSLA')}"/>
-        </ui:define>
-    </ui:composition>   
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Test</title>
+    </h:head>
+    <h:body>
+        <h1>TSLA stock price: #{stockManager.getStockPrice('TSLA')}</h1>
+        <h:outputText value="test" />
+        <h:outputText value="#{stockManager.getStockPrice('TSLA')}" />
+    </h:body>
 </html>

@@ -5,7 +5,7 @@
 package com.vt.stockwebgame.manager;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
 import com.vt.stockwebgame.domains.User;
@@ -67,6 +67,10 @@ public class StockManager implements Serializable {
     
     public float getStockPrice(String symbol) {
         return StockLookup.loadStock(symbol).getPrice();
+    }
+    
+    public String testit() {
+        return "this is a test";
     }
     
     //--------------------------------------------------------------------------
