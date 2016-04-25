@@ -3,10 +3,8 @@
 <!--
 Welcome page basic information and login forms
 -->
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
+<html lang="en">
+    <head>
         <title>Test</title>
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
@@ -24,18 +22,16 @@ Welcome page basic information and login forms
 
             series : [{
                 name : 'TSLA',
-                data : #{stockManager.getStockData('TSLA'),
+                data : ${data},
                 tooltip: {
                     valueDecimals: 2
                 }
             }]
         });
         </script>
-    </h:head>
-    <h:body>
-        <h1>TSLA stock price: #{stockManager.getStockPrice('TSLA')}</h1>
-        <h:outputText value="test" />
-        <h:outputText value="#{stockManager.getStockPrice('TSLA')}" />
-        <h:outputText value="#{stockManager.getStockData('TSLA')}" />
-    </h:body>
+    </head>
+    <body>
+        <h1>TSLA stock price: ${price}</h1>
+    ${data}
+    </body>
 </html>
