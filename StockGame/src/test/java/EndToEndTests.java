@@ -1,16 +1,20 @@
+import com.vt.stockwebgame.manager.StockManager;
+import com.vt.stockwebgame.routes.Router;
 import org.junit.Before;
 import org.junit.Test;
+import spark.Request;
 
 import static org.junit.Assert.*;
 
 /**
- * Created by painter on 4/25/16.
+ * End to end tests!
  */
-public class RouterTest {
+public class EndToEndTests {
+    private StockManager manager;
 
     @Before
     public void setup() {
-
+        Router.setupTestUser(manager);
     }
 
     @Test

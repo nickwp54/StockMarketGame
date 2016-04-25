@@ -14,7 +14,6 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
