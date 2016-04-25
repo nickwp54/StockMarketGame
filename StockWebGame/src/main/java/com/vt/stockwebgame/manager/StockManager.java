@@ -4,12 +4,14 @@
  */
 package com.vt.stockwebgame.manager;
 
+import com.vt.stockwebgame.domains.*;
 import java.io.Serializable;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 import java.util.ArrayList;
 import com.vt.stockwebgame.domains.User;
 import com.vt.stockwebgame.helpers.StockLookup;
+import java.util.Collections;
 
 /**
  *
@@ -66,11 +68,33 @@ public class StockManager implements Serializable {
     }
     
     public float getStockPrice(String symbol) {
-        return StockLookup.loadStock(symbol).getPrice();
+        Stock s = StockLookup.loadStock(symbol);
+        if (s == null) {
+            return 0;
+        }
+        else {
+            return s.getPrice();
+        }
     }
     
     public String getStockData(String symbol) {
-        return StockLookup.loadStockChart(symbol).getChartJSON();
+        StockChart s = StockLookup.loadStockChart(symbol);
+        if (s == null) {
+            return "";
+        }
+        else {
+            return s.getChartJSON();
+        }
+    }
+    
+    public boolean checkStockExists(String symbol) {
+        return StockLookup.loadStock(symbol) == null;
+    }
+    
+    public ArrayList<User> getLeaderboard() {
+        ArrayList<User> leaderboard = new ArrayList<User>(ActiveUsers);
+        Collections.sort(leaderboard);
+        return leaderboard;
     }
     
     public String testit() {
