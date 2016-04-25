@@ -4,9 +4,9 @@
  */
 package com.vt.stockwebgame.manager;
 
-import java.io.Serializable;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
+import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import com.vt.stockwebgame.domains.User;
 import com.vt.stockwebgame.helpers.StockLookup;
@@ -20,12 +20,12 @@ import com.vt.stockwebgame.helpers.StockLookup;
 public class StockManager implements Serializable {
     
     private User user;
-    private User login; 
+    private String username; 
+    private String password; 
     private ArrayList<User> ActiveUsers; 
-    private String statusMessage; 
+    private String statusMessage;
     
     public StockManager() {
-        login = new User(); 
     }
 
     public User getUser() {
@@ -35,13 +35,21 @@ public class StockManager implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-    
-    public User getLogin() {
-        return login;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(User login) {
-        this.login = user;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public ArrayList<User> getActiveUsers() {
@@ -78,7 +86,7 @@ public class StockManager implements Serializable {
     public String loginUser() {
         
         for (User u : ActiveUsers) {
-            if (u.getUsername().equals(login.getUsername()) && u.getPassword().equals(login.getPassword())) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 user = u; 
             }
             else {

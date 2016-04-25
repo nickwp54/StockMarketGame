@@ -15,13 +15,13 @@ Welcome page basic information and login forms
                 <h:panelGroup class="form-group">
                     <h:outputLabel class="" id="usernameLabel" for="username"
                                    value="Username:   " />
-                    <h:inputText class="" id="usernameName" value="#{stockManager.login.username}" />
+                    <h:inputText class="" id="usernameName" value="#{stockManager.username}" />
                 </h:panelGroup>
 
                 <h:panelGroup class="form-group">
                     <h:outputLabel class="" id="passwordLabel" for="password"
                                    value="Password:   " />
-                    <h:inputSecret class="" id="password" value="#{stockManager.login.password}" />
+                    <h:inputSecret class="" id="password" value="#{stockManager.password}" />
                 </h:panelGroup>
 
                 <br/>
@@ -32,8 +32,8 @@ Welcome page basic information and login forms
                 
                 <p> or </p>
 
-                <h:commandButton class="btn btn-default" id="newUser" 
-                                 action="#{stockManager.prepareCreateUser()}" value="New User" />  
+                <h:button class="btn btn-default" id="newUser" 
+                          outcome="#{stockManager.prepareCreateUser()}" value="New User" />  
                 
             </h:form>
         </ui:define>

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b1c97a16-9bef-428e-9b9d-f4a3d3530e1b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StockWebGame/src/main/java/com/mycompany/stockwebgame/manager/StockManager.java" afterPath="$PROJECT_DIR$/../StockWebGame/src/main/java/com/mycompany/stockwebgame/manager/StockManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StockWebGame/src/main/java/com/vt/stockwebgame/manager/StockManager.java" afterPath="$PROJECT_DIR$/../StockWebGame/src/main/java/com/vt/stockwebgame/manager/StockManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../StockWebGame/src/main/webapp/ViewStock.xhtml" afterPath="$PROJECT_DIR$/../StockWebGame/src/main/webapp/ViewStock.xhtml" />
     </list>
     <ignored path="StockGame.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -470,7 +471,7 @@
       <option name="presentableId" value="Default" />
       <updated>1461546570884</updated>
       <workItem from="1461546574344" duration="585000" />
-      <workItem from="1461560914358" duration="22000" />
+      <workItem from="1461560914358" duration="419000" />
     </task>
     <servers />
   </component>
@@ -480,7 +481,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1085000" />
+    <option name="totallyTimeSpent" value="1482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="710" extended-state="6" />
