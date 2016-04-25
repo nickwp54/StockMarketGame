@@ -1,0 +1,90 @@
+/* Author: Nicholas Phillpott
+ * A CSS file that contains some custom changes
+ */
+ 
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+}
+ 
+/*
+ * Add on for table cell formating
+ */
+.my-column {
+     word-break: break-all;
+     word-wrap: break-word;
+}
+
+/* Made using the awesome resource http://work.smarchal.com/twbscolor/css 
+   What this css does is changes the colors of Bootstrap which is how I made
+   it red. */
+
+.navbar-default {
+  background-color: #bd2718;
+  border-color: #bb645b;
+}
+.navbar-default .navbar-brand {
+  color: #030404;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ffbbbc;
+}
+.navbar-default .navbar-text {
+  color: #030404;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #030404;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffbbbc;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #ffbbbc;
+  background-color: #bb645b;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #ffbbbc;
+  background-color: #bb645b;
+}
+.navbar-default .navbar-toggle {
+  border-color: #bb645b;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #bb645b;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #030404;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #030404;
+}
+.navbar-default .navbar-link {
+  color: #030404;
+}
+.navbar-default .navbar-link:hover {
+  color: #ffbbbc;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #030404;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffbbbc;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffbbbc;
+    background-color: #bb645b;
+  }
+}
