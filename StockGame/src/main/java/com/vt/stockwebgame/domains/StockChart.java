@@ -6,8 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class StockChart {
@@ -55,7 +53,6 @@ public class StockChart {
             try {
                 timestamp = new java.sql.Timestamp(
                         sdf.parse(jsonDates.getString(i)).getTime()).getTime();
-                System.out.println(timestamp);
             } catch (ParseException ex) {
                 System.out.println(ex.toString());
                 continue;

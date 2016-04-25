@@ -5,38 +5,81 @@ Welcome page basic information and login forms
 -->
 <html lang="en">
     <head>
+        #parse('global_head.vm')
         <title>Test</title>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="js/highcharts_theme.js"></script>
         <script type="text/javascript">
             $(function () {
-                data = ${data}
-                $('#container').highcharts('StockChart', {
+                data = ${data};
 
-
+                $('#chart').highcharts('StockChart', {
                         rangeSelector : {
                             selected : 1
                         },
 
-                        title : {
-                            text : '${symbol} Stock Price'
-                        },
+//                        title : {
+//                            text : '${symbol} Stock History'
+//                        },
 
                         series : [{
                             name : '${symbol}',
                             data : data,
-                            tooltip: {
-                                valueDecimals: 2
+                            shadow : true,
+                            tooltip : {
+                                valueDecimals : 2
                             }
                         }]
                     });
                 });
 
         </script>
+        <style>
+            .center-form {
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <h1>${symbol} stock price: ${price}</h1>
-        <div id="container" style="width:100%; height:400px;"></div>
+    #parse('global_nav.vm')
+    #if($valid)
+        <div class="center-form">
+            <h3>${symbol} stock price:  <span class="label label-primary">$${price}</span></h3>
+
+            <hr>
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="buy-quantity">Amount (in shares)</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">${symbol}</div>
+                        <input type="text" class="form-control" id="buy-quantity" placeholder="Shares To Buy">
+                    </div>
+                    <button type="submit" class="btn btn-success">BUY</button>
+                </div>
+
+                <br><br>
+
+                <div class="form-group">
+                    <label class="sr-only" for="sell-quantity">Amount (in shares)</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">${symbol}</div>
+                        <input type="text" class="form-control" id="sell-quantity" placeholder="Shares To Sell">
+                    </div>
+                    <button type="submit" class="btn btn-danger">SELL</button>
+                </div>
+            </form>
+        </div>
+
+    <div id="chart" style="width:100%; height:400px;"></div>
+
+
+    #else
+    <div class="alert alert-danger" role="alert"><b>Invalid symbol ${symbol}!</b> Try the ticker name of a stock like
+        <a href="viewstock?sym=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?sym=AAPL" class="alert-link">TSLA</a>, or <a href="viewstock?sym=AAPL" class="alert-link">GOOG</a>.</div>
+
+    #end
     </body>
 </html>
