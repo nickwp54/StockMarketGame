@@ -17,6 +17,7 @@ public class Router {
 
         get("/viewstock", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            model.put("symbol", request.queryParams("sym"));
             model.put("price", manager.getStockPrice(request.queryParams("sym")));
             model.put("data", manager.getStockData(request.queryParams("sym")));
 

@@ -6,32 +6,37 @@ Welcome page basic information and login forms
 <html lang="en">
     <head>
         <title>Test</title>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
         <script src="https://code.highcharts.com/stock/highstock.js"></script>
         <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
         <script type="text/javascript">
-            $('#container').highcharts('StockChart', {
+            $(function () {
+                data = ${data}
+                $('#container').highcharts('StockChart', {
 
 
-            rangeSelector : {
-                selected : 1
-            },
+                        rangeSelector : {
+                            selected : 1
+                        },
 
-            title : {
-                text : 'TSLA Stock Price'
-            },
+                        title : {
+                            text : '${symbol} Stock Price'
+                        },
 
-            series : [{
-                name : 'TSLA',
-                data : ${data},
-                tooltip: {
-                    valueDecimals: 2
-                }
-            }]
-        });
+                        series : [{
+                            name : '${symbol}',
+                            data : data,
+                            tooltip: {
+                                valueDecimals: 2
+                            }
+                        }]
+                    });
+                });
+
         </script>
     </head>
     <body>
-        <h1>TSLA stock price: ${price}</h1>
-    ${data}
+        <h1>${symbol} stock price: ${price}</h1>
+        <div id="container" style="width:100%; height:400px;"></div>
     </body>
 </html>
