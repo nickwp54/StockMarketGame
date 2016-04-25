@@ -22,7 +22,7 @@ public class User {
     private Map<String, Integer> stocks;
     private float balance; 
     
-    private User() {
+    public User() {
         // 
         stocks = new HashMap<String, Integer>(); 
         balance = 10000; 

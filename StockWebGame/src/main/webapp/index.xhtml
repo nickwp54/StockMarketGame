@@ -10,7 +10,32 @@ Welcome page basic information and login forms
 
     <ui:composition template="/templates/main.xhtml">
         <ui:define name="content">
-            BODY
+            <h:form class="form-horizontal">
+                
+                <h:panelGroup class="form-group">
+                    <h:outputLabel class="" id="usernameLabel" for="username"
+                                   value="Username:   " />
+                    <h:inputText class="" id="usernameName" value="#{stockManager.login.username}" />
+                </h:panelGroup>
+
+                <h:panelGroup class="form-group">
+                    <h:outputLabel class="" id="passwordLabel" for="password"
+                                   value="Password:   " />
+                    <h:inputSecret class="" id="password" value="#{stockManager.login.password}" />
+                </h:panelGroup>
+
+                <br/>
+
+                <h:commandButton class="btn btn-default" id="login" 
+                                 action="#{stockManager.loginUser()}" value="Login" />   
+                <h:button class="btn btn-default" id="cancel" outcome="index" value="Cancel" />
+                
+                <p> or </p>
+
+                <h:commandButton class="btn btn-default" id="newUser" 
+                                 action="#{stockManager.prepareCreateUser()}" value="New User" />  
+                
+            </h:form>
         </ui:define>
     </ui:composition>        
 
