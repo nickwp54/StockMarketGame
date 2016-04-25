@@ -4,14 +4,17 @@
  */
 package com.vt.stockwebgame.domains;
 
+import com.vt.stockwebgame.helpers.StockLookup;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  *
  * @author painter
  */
-public class User {
+public class User implements Comparator<User>, Comparable<User> {
     
     private String username; 
     private String password; 
@@ -25,7 +28,7 @@ public class User {
     public User() {
         // 
         stocks = new HashMap<String, Integer>(); 
-        balance = 10000; 
+        balance = new Random().nextFloat() * 1000 + 10000; 
     }
 
     public String getUsername() {
@@ -127,5 +130,25 @@ public class User {
         if (current > 0) {
             stocks.put(stock.getSymbol(), current);
         }
+    }
+    
+    public float calculateNetWorth() {
+        float total = balance;
+        for (Map.Entry<String, Integer> s : stocks.entrySet()) {
+            Stock stock = StockLookup.loadStock(s.getKey());
+            float price = stock != null ? stock.getPrice() : 0;
+            total += price * s.getValue();
+        }
+        return total;
+    }
+
+    @Override
+    public int compare(User u, User u2) {
+        return Float.compare(u.calculateNetWorth(), u2.calculateNetWorth());
+    }
+    
+    @Override
+    public int compareTo(User u){
+        return ((Float)this.calculateNetWorth()).compareTo(u.calculateNetWorth());
     }
 }
