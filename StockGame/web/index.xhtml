@@ -1,18 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
-Author: Nicholas Phillpott
 Welcome page basic information and login forms
 -->
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<ui:composition template="/templates/main.xhtml">
-   <ui:define name="content">
-      BODY
-   </ui:define>
-</ui:composition>
+    <ui:composition template="/templates/main.xhtml">
+        <ui:define name="content">
+            <h:form class="form-horizontal">
+                
+                <h:panelGroup class="form-group">
+                    <h:outputLabel class="" id="usernameLabel" for="username"
+                                   value="Username:   " />
+                    <h:inputText class="" id="usernameName" value="#{stockManager.username}" />
+                </h:panelGroup>
+
+                <h:panelGroup class="form-group">
+                    <h:outputLabel class="" id="passwordLabel" for="password"
+                                   value="Password:   " />
+                    <h:inputSecret class="" id="password" value="#{stockManager.password}" />
+                </h:panelGroup>
+
+                <br/>
+
+                <h:commandButton class="btn btn-default" id="login" 
+                                 action="#{stockManager.loginUser()}" value="Login" />   
+                <h:button class="btn btn-default" id="cancel" outcome="index" value="Cancel" />
+                
+                <p> or </p>
+
+                <h:button class="btn btn-default" id="newUser" 
+                          outcome="#{stockManager.prepareCreateUser()}" value="New User" />  
+                
+                <h:outputText value="#{stockManager.testit()}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>        
 
 </html>
