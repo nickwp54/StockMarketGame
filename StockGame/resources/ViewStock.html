@@ -44,29 +44,32 @@ Welcome page basic information and login forms
     </head>
     <body>
     #parse('global_nav.vm')
+
     #if($valid)
         <div class="center-form">
             <h3>${symbol} stock price:  <span class="label label-primary">$${price}</span></h3>
 
             <hr>
 
-            <form class="form-inline">
+            <form class="form-inline" action="/buystock">
                 <div class="form-group">
-                    <label class="sr-only" for="buy-quantity">Amount (in shares)</label>
+                    <label class="sr-only" for="buy">Amount (in shares)</label>
                     <div class="input-group">
                         <div class="input-group-addon">${symbol}</div>
-                        <input type="text" class="form-control" id="buy-quantity" placeholder="Shares To Buy">
+                        <input type="text" class="form-control" id="buy" name="quantity"  placeholder="Shares To Buy">
+                        <input type="hidden" name="symbol" value="${symbol}">
                     </div>
                     <button type="submit" class="btn btn-success">BUY</button>
                 </div>
-
-                <br><br>
-
+            </form>
+            <br>
+            <form class="form-inline" action="/sellstock">
                 <div class="form-group">
-                    <label class="sr-only" for="sell-quantity">Amount (in shares)</label>
+                    <label class="sr-only" for="sell">Amount (in shares)</label>
                     <div class="input-group">
                         <div class="input-group-addon">${symbol}</div>
-                        <input type="text" class="form-control" id="sell-quantity" placeholder="Shares To Sell">
+                        <input type="text" class="form-control" id="sell" name="quantity" placeholder="Shares To Sell">
+                        <input type="hidden" name="symbol" value="${symbol}">
                     </div>
                     <button type="submit" class="btn btn-danger">SELL</button>
                 </div>
@@ -78,11 +81,11 @@ Welcome page basic information and login forms
 
     #elseif(!$symbol)
     <div class="alert alert-danger" role="alert"><b>No symbol specified!</b> Try the ticker name of a stock like
-        <a href="viewstock?sym=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?sym=TSLA" class="alert-link">TSLA</a>, or <a href="viewstock?sym=GOOG" class="alert-link">GOOG</a>.</div>
+        <a href="viewstock?symbol=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?symbol=TSLA" class="alert-link">TSLA</a>, or <a href="viewstock?symbol=GOOG" class="alert-link">GOOG</a>.</div>
 
     #else
     <div class="alert alert-danger" role="alert"><b>Invalid symbol ${symbol}!</b> Try the ticker name of a stock like
-        <a href="viewstock?sym=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?sym=TSLA" class="alert-link">TSLA</a>, or <a href="viewstock?sym=GOOG" class="alert-link">GOOG</a>.</div>
+        <a href="viewstock?symbol=AAPL" class="alert-link">AAPL</a>, <a href="viewstock?symbol=TSLA" class="alert-link">TSLA</a>, or <a href="viewstock?symbol=GOOG" class="alert-link">GOOG</a>.</div>
     #end
     </body>
 </html>
