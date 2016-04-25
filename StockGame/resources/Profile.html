@@ -20,6 +20,9 @@
         #if($sell_error)
         <div class="alert alert-danger" role="alert"><b>Insufficient shares!</b> You do not have the available number of
             shares to sell.</div>
+        #elseif($sell_success)
+        <div class="alert alert-success" role="alert"><b>Shares sold!</b> You sold ${quantity} shares of ${symbol}
+            for $numberTool.currency($sell_price)</div>
         #end
 
 
@@ -51,12 +54,18 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>Company Name</th>
                   <th>Ticker</th>
                   <th>Current Price</th>
                   <th>Amount</th>
                 </tr>
               </thead>
+                #foreach($stock in $user.getAllStocks())
+                <tr>
+                    <td>$stock.symbol</td>
+                    <td>$stock.price</td>
+                    <td>$numberTool.integer($stock.quantity)</td>
+                </tr>
+                #end
             </table>
             </div>
           </div>
