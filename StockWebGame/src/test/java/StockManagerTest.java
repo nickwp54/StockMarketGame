@@ -15,7 +15,13 @@ public class StockManagerTest {
     @Test
     public void testGetStockPrice() {
         float price = stockManager.getStockPrice("TSLA");
-        System.out.println("Price is: " + price);
-        Assert.assertTrue(price > 100 && price < 500);
+        Assert.assertTrue(price > 0 && price < 1000);
+    }
+    
+    @Test
+    public void testGetStockData() {
+        String data = stockManager.getStockData("TSLA");
+        Assert.assertNotNull(data);
+        Assert.assertTrue(data.length() > 0);
     }
 }

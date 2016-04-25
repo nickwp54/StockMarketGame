@@ -69,6 +69,10 @@ public class StockManager implements Serializable {
         return StockLookup.loadStock(symbol).getPrice();
     }
     
+    public String getStockData(String symbol) {
+        return StockLookup.loadStockChart(symbol).getChartJSON();
+    }
+    
     public String testit() {
         return "this is a test";
     }

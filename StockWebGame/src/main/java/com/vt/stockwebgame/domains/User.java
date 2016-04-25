@@ -4,6 +4,7 @@
  */
 package com.vt.stockwebgame.domains;
 
+import com.vt.stockwebgame.helpers.StockLookup;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -127,5 +128,13 @@ public class User {
         if (current > 0) {
             stocks.put(stock.getSymbol(), current);
         }
+    }
+    
+    public float calculateNetWorth() {
+        float total = 0;
+        for (Map.Entry<String, Integer> s : stocks.entrySet()) {
+            total += StockLookup.loadStock(s.getKey()).getPrice() * s.getValue();
+        }
+        return total;
     }
 }

@@ -8,10 +8,34 @@ Stock view area
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Test</title>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script type="text/javascript">
+            $('#container').highcharts('StockChart', {
+
+
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : 'TSLA Stock Price'
+            },
+
+            series : [{
+                name : 'TSLA',
+                data : #{stockManager.getStockData('TSLA'),
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+        </script>
     </h:head>
     <h:body>
         <h1>TSLA stock price: #{stockManager.getStockPrice('TSLA')}</h1>
         <h:outputText value="test" />
         <h:outputText value="#{stockManager.getStockPrice('TSLA')}" />
+        <h:outputText value="#{stockManager.getStockData('TSLA')}" />
     </h:body>
 </html>
