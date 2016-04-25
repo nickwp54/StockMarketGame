@@ -85,9 +85,7 @@ public class Router {
         u.setUsername("testName");
 
         String symbol = request.queryParams("sym");
-        Map<String, Object> model = new HashMap<>();
-        model.put("numberTool", new NumberTool());
-        model.put("user", u);
+        Map<String, Object> model = createModelForUser(u);
 
         if (symbol != null && symbol.length() > 0) {
             model.put("symbol", symbol.toUpperCase());
@@ -106,5 +104,12 @@ public class Router {
         }
 
         return new ModelAndView(model, "viewstock.html");
+    }
+
+    public static Map<String, Object> createModelForUser(User u) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("numberTool", new NumberTool());
+        map.put("user", u);
+        return map;
     }
 }
